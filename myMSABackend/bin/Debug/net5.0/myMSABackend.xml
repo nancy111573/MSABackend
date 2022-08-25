@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>myMSABackend</name>
+    </assembly>
+    <members>
+        <member name="M:myMSABackend.Controllers.PokemonController.#ctor(System.Net.Http.IHttpClientFactory,myMSABackend.Data.IDBRepo)">
+            <summary />
+        </member>
+        <member name="M:myMSABackend.Controllers.PokemonController.GetRawPokemonItems">
+            <summary>
+            Gets the raw JSON of all items in pokemon
+            </summary>
+            <returns>A JSON object representing all items in pokemon</returns>
+        </member>
+        <member name="M:myMSABackend.Controllers.PokemonController.getPokemonTeam">
+            <summary>
+            Read all pokemons added to the team
+            </summary>
+            <returns>A list of Pokemon names</returns>
+        </member>
+        <member name="M:myMSABackend.Controllers.PokemonController.getPokemon(System.String)">
+            <summary>
+            Read a pokemon's name, power, and experience if its in the team
+            </summary>
+            <param name="name">name of pokemon</param>
+            <returns>The pokemon's details</returns>
+        </member>
+        <member name="M:myMSABackend.Controllers.PokemonController.GetRawPokemon(System.String)">
+            <summary>
+            Get pokemon data from the official api
+            </summary>
+            <param name="name">name of a pokemon</param>
+            <returns>A string of pokemon details</returns>
+        </member>
+        <member name="M:myMSABackend.Controllers.PokemonController.addPokemon(System.String)">
+            <summary>
+            Add a pokemon to the team if its an official pokemon
+            </summary>
+            <param name="name">name of a pokemon</param>
+            <returns>A 201 Created response</returns>
+        </member>
+        <member name="M:myMSABackend.Controllers.PokemonController.setNickname(System.String,System.String)">
+            <summary>
+            Set a pokemon's nickname
+            </summary>
+            <param name="name">name of a pokemon</param>
+            <param name="nickname">new value for nickname</param>
+            <returns>A 201 Created Response></returns>
+        </member>
+        <member name="M:myMSABackend.Controllers.PokemonController.deletePokemon(System.String)">
+            <summary>
+            Delete a pokemon form the team
+            </summary>
+            <param name="name">name of a pokemon</param>
+            <returns>A 204 No Content Response</returns>
+        </member>
+    </members>
+</doc>
