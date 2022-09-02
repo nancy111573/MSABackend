@@ -49,11 +49,11 @@ namespace myMSABackend.Controllers
         [HttpGet]
         [Route("getPokemonTeam")]
         [ProducesResponseType(200)]
-        public ActionResult<IEnumerable<string>> getPokemonTeam()
+        public ActionResult<IEnumerable<Pokemon>> getPokemonTeam()
         {
             IEnumerable<Pokemon> pokemons = _repository.GetPokemons();
             IEnumerable<string> c = pokemons.Select(e => e.Name);
-            return Ok(c);
+            return Ok(pokemons);
         }
 
         /// <summary>
@@ -73,9 +73,9 @@ namespace myMSABackend.Controllers
             else
             {
                 if (p.Nickname != null)
-                    return Ok("Name: " + name + ", Power: " + p.Power.ToString() + ", Nickname: " + p.Nickname);
+                    return Ok(p);
                 else
-                    return Ok("Name: " + name + " Power: " + p.Power.ToString());
+                    return Ok(p);
             }
         }
 
@@ -104,6 +104,7 @@ namespace myMSABackend.Controllers
         [Route("addPokemon")]
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
         public async Task<IActionResult> addPokemon(string name)
         {
             Pokemon p = _repository.GetPokemonByName(name);
@@ -112,7 +113,7 @@ namespace myMSABackend.Controllers
                 var content = GetRawPokemon(name.ToLower()).Result;
                 if (content == "Not Found")
                 {
-                    return NotFound(name + "is not an official Pokemon.");
+                    return NotFound(name + " is not an official Pokemon.");
                 }
                 // triming to get base experience and use assign to pokemon's "Power"
                 int start = content.IndexOf("base_experience") + "base_experience".Length + 2;

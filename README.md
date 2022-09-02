@@ -4,6 +4,8 @@ This is an API that allow users to validate a pokemon from the official [pokeapi
 
 Simply open it in Visual Studio and run, the swagger page with all the endpoints will showup. 
 
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/17071782-560dcaa4-dfa3-410b-a92e-4c500a21b97f?action=collection%2Ffork&collection-url=entityId%3D17071782-560dcaa4-dfa3-410b-a92e-4c500a21b97f%26entityType%3Dcollection%26workspaceId%3D2fa8564e-44e0-4971-b7bf-5f18e1b31955)
+
 ## API Structure
 
 1. `PokemonController` - contains all CRUD and connection to external api.

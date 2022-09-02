@@ -10,6 +10,8 @@ using myMSABackend.Controllers;
 using System.Net.Http;
 using NSubstitute;
 using Microsoft.AspNetCore.Mvc;
+using Castle.Core.Resource;
+using FluentValidation.Results;
 
 namespace myMSABackendTest
 {
@@ -20,6 +22,8 @@ namespace myMSABackendTest
         IDBRepo repository = null;
         IHttpClientFactory client = null;
         IDBContext dbContextMock = null;
+
+        PokemonValidator validator = new PokemonValidator();
 
         [SetUp]
         public void Setup()
@@ -50,16 +54,25 @@ namespace myMSABackendTest
         {
             var data = repository.GetPokemons();
             Assert.AreEqual("Pikachu", data.ToArray()[0].Name);
+            ValidationResult results = validator.Validate(data.ToArray()[0]);
+            Assert.AreEqual(true, results.IsValid);
         }
 
         [Test]
         public async Task TestGetTeam()
         {
             var data1 = controller.getPokemonTeam();
+            Pokemon pikachu = new Pokemon { Name = "Pikachu", Power = 112, Nickname = null };
+            Pokemon cubone = new Pokemon { Name = "Cubone", Power = 64, Nickname = null };
 
-            var result1 = ((IEnumerable<String>)((ObjectResult)data1.Result).Value).ToList();
-            Assert.Contains("Pikachu", result1);
-            Assert.Contains("Cubone", result1);
+            var result1 = ((IEnumerable<Pokemon>)((ObjectResult)data1.Result).Value).ToList();
+            Assert.AreEqual(result1.ElementAt(0).Name, pikachu.Name);
+            Assert.AreEqual(result1.ElementAt(0).Power, pikachu.Power);
+            Assert.AreEqual(result1.ElementAt(0).Nickname, pikachu.Nickname);
+
+            Assert.AreEqual(result1.ElementAt(1).Name, cubone.Name);
+            Assert.AreEqual(result1.ElementAt(1).Power, cubone.Power);
+            Assert.AreEqual(result1.ElementAt(1).Nickname, cubone.Nickname);
             Assert.AreEqual(result1.Count(), 2);
         }
 

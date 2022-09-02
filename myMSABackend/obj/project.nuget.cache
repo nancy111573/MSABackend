@@ -1,9 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "esbnff69gCEpwOLQIsgfo6hMlgMBIfJnFhJhLNly+WLAgzHvu4bIIDf/hRWLve9Dc0qlq8RkTl6B4BBcjlH3iA==",
+  "dgSpecHash": "ykDsb3BHtl1pOcpJQZY70NIFcXfxQ5W2NkSG7SahJO4SWCeydKCOkseolyRJNYpqcFvW7tUow+5GpNmzljJFRg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\nancy\\Documents\\2022S1\\MSA\\2022-Phase-2\\myMSABackend\\myMSABackend\\myMSABackend.csproj",
+  "projectFilePath": "C:\\Users\\nancy\\Documents\\2022S1\\MSA\\MSABackend\\myMSABackend\\myMSABackend.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\nancy\\.nuget\\packages\\fluentvalidation\\11.2.1\\fluentvalidation.11.2.1.nupkg.sha512",
+    "C:\\Users\\nancy\\.nuget\\packages\\fluentvalidation.aspnetcore\\11.2.1\\fluentvalidation.aspnetcore.11.2.1.nupkg.sha512",
+    "C:\\Users\\nancy\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.2.0\\fluentvalidation.dependencyinjectionextensions.11.2.0.nupkg.sha512",
     "C:\\Users\\nancy\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\nancy\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\nancy\\.nuget\\packages\\microsoft.data.sqlite.core\\5.0.17\\microsoft.data.sqlite.core.5.0.17.nupkg.sha512",
@@ -115,8 +118,7 @@
     "C:\\Users\\nancy\\.nuget\\packages\\system.threading.tasks.extensions\\4.0.0\\system.threading.tasks.extensions.4.0.0.nupkg.sha512",
     "C:\\Users\\nancy\\.nuget\\packages\\system.xml.readerwriter\\4.0.11\\system.xml.readerwriter.4.0.11.nupkg.sha512",
     "C:\\Users\\nancy\\.nuget\\packages\\system.xml.xdocument\\4.0.11\\system.xml.xdocument.4.0.11.nupkg.sha512",
-    "C:\\Users\\nancy\\.nuget\\packages\\yamldotnet\\11.2.1\\yamldotnet.11.2.1.nupkg.sha512",
-    "C:\\Users\\nancy\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.16\\microsoft.netcore.app.host.win-x64.5.0.16.nupkg.sha512"
+    "C:\\Users\\nancy\\.nuget\\packages\\yamldotnet\\11.2.1\\yamldotnet.11.2.1.nupkg.sha512"
   ],
   "logs": []
 }

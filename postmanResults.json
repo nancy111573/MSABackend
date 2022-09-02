@@ -1,0 +1,499 @@
+{
+	"id": "9bda2c86-a13c-4f7a-9084-b8624f4fca98",
+	"name": "New Collection",
+	"timestamp": "2022-09-01T00:49:36.868Z",
+	"collection_id": "17071782-560dcaa4-dfa3-410b-a92e-4c500a21b97f",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 26,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "0e0c4156-8a7e-4e8a-9f46-51c5f574cd34",
+			"name": "getPokemonTeam (empty)",
+			"url": "https://localhost:44300/Pokemon/getPokemonTeam",
+			"time": 83,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Returns an empty team": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Returns an empty team": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				83
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Returns an empty team": true
+				}
+			]
+		},
+		{
+			"id": "5ad1452d-61ae-4437-ae50-fc129665945b",
+			"name": "getRawItems",
+			"url": "https://localhost:44300/Pokemon/getRawItems",
+			"time": 176,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"response must be valid and have a body": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"response must be valid and have a body": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				176
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"response must be valid and have a body": true
+				}
+			]
+		},
+		{
+			"id": "b26f3d73-fa0a-4e99-8466-37dd062a6448",
+			"name": "getPokemonFromAPI (official pokemon)",
+			"url": "https://localhost:44300/Pokemon/getPokemonFromAPI?name=cubone",
+			"time": 239,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"response must be valid and have a body": true,
+				"Status code is 200": true,
+				"Returns cubone details": true
+			},
+			"testPassFailCounts": {
+				"response must be valid and have a body": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Returns cubone details": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				239
+			],
+			"allTests": [
+				{
+					"response must be valid and have a body": true,
+					"Status code is 200": true,
+					"Returns cubone details": true
+				}
+			]
+		},
+		{
+			"id": "70e7e9bd-d34b-4a53-abc8-5a42d544170b",
+			"name": "getPokemonFromAPI (not official pokemon)",
+			"url": "https://localhost:44300/Pokemon/getPokemonFromAPI?name=pooh",
+			"time": 74,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Body contains string not found": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body contains string not found": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				74
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Body contains string not found": true
+				}
+			]
+		},
+		{
+			"id": "91cb8ab7-5595-4018-998a-88ce4948e86c",
+			"name": "addPokemon",
+			"url": "https://localhost:44300/Pokemon/addPokemon?name=cubone",
+			"time": 275,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true,
+				"Returns cubone details": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Returns cubone details": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				275
+			],
+			"allTests": [
+				{
+					"Status code is 201": true,
+					"Returns cubone details": true
+				}
+			]
+		},
+		{
+			"id": "d5f5e9be-6bb0-4292-9689-017af66e9453",
+			"name": "getPokemonTeam",
+			"url": "https://localhost:44300/Pokemon/getPokemonTeam",
+			"time": 19,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Returns a not empty team": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Returns a not empty team": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				19
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Returns a not empty team": true
+				}
+			]
+		},
+		{
+			"id": "13fb0fcb-e136-4780-aeb4-afa32e2503c9",
+			"name": "addPokemon (not official pokemon)",
+			"url": "https://localhost:44300/Pokemon/addPokemon?name=snor",
+			"time": 66,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status code is 404": true,
+				"Body contains string not found": true
+			},
+			"testPassFailCounts": {
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body contains string not found": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				66
+			],
+			"allTests": [
+				{
+					"Status code is 404": true,
+					"Body contains string not found": true
+				}
+			]
+		},
+		{
+			"id": "d4c4d7ef-e409-441f-a4e0-1ded581e4c51",
+			"name": "getPokemon",
+			"url": "https://localhost:44300/Pokemon/getPokemon?name=cubone",
+			"time": 13,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Returns cubone details": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Returns cubone details": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				13
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Returns cubone details": true
+				}
+			]
+		},
+		{
+			"id": "e7eed221-266e-4107-ab26-960e120473d5",
+			"name": "getPokemon (not in team)",
+			"url": "https://localhost:44300/Pokemon/getPokemon?name=pikachu",
+			"time": 26,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status code is 404": true,
+				"Body contains string not found": true
+			},
+			"testPassFailCounts": {
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body contains string not found": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				26
+			],
+			"allTests": [
+				{
+					"Status code is 404": true,
+					"Body contains string not found": true
+				}
+			]
+		},
+		{
+			"id": "08da2320-fc26-4508-bd00-71fbdf5b9495",
+			"name": "setNickname",
+			"url": "https://localhost:44300/Pokemon/setNickname?name=cubone&nickname=cute",
+			"time": 35,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Returns cubone details": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Returns cubone details": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				35
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Returns cubone details": true
+				}
+			]
+		},
+		{
+			"id": "309a2fa5-d5f8-4d61-bf22-5d79d9e671cb",
+			"name": "setNickname (not in team)",
+			"url": "https://localhost:44300/Pokemon/setNickname?name=pika&nickname=yellow",
+			"time": 29,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status code is 404": true,
+				"Body contains string not found": true
+			},
+			"testPassFailCounts": {
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body contains string not found": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				29
+			],
+			"allTests": [
+				{
+					"Status code is 404": true,
+					"Body contains string not found": true
+				}
+			]
+		},
+		{
+			"id": "07ea948a-f685-4843-bd02-7f1d005ce591",
+			"name": "deletePokemon",
+			"url": "https://localhost:44300/Pokemon?name=cubone",
+			"time": 43,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content"
+			},
+			"tests": {
+				"Status code is 204": true
+			},
+			"testPassFailCounts": {
+				"Status code is 204": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				43
+			],
+			"allTests": [
+				{
+					"Status code is 204": true
+				}
+			]
+		},
+		{
+			"id": "207c83f1-83ec-4beb-ad45-659b5ff690af",
+			"name": "deletePokemon (not in team)",
+			"url": "https://localhost:44300/Pokemon?name=snorlax",
+			"time": 25,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true,
+				"Body contains string not found": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body contains string not found": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				25
+			],
+			"allTests": [
+				{
+					"Status code is 400": true,
+					"Body contains string not found": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 1103,
+	"collection": {
+		"requests": [
+			{
+				"id": "0e0c4156-8a7e-4e8a-9f46-51c5f574cd34",
+				"method": "GET"
+			},
+			{
+				"id": "5ad1452d-61ae-4437-ae50-fc129665945b",
+				"method": "GET"
+			},
+			{
+				"id": "b26f3d73-fa0a-4e99-8466-37dd062a6448",
+				"method": "GET"
+			},
+			{
+				"id": "70e7e9bd-d34b-4a53-abc8-5a42d544170b",
+				"method": "GET"
+			},
+			{
+				"id": "91cb8ab7-5595-4018-998a-88ce4948e86c",
+				"method": "POST"
+			},
+			{
+				"id": "d5f5e9be-6bb0-4292-9689-017af66e9453",
+				"method": "GET"
+			},
+			{
+				"id": "13fb0fcb-e136-4780-aeb4-afa32e2503c9",
+				"method": "POST"
+			},
+			{
+				"id": "d4c4d7ef-e409-441f-a4e0-1ded581e4c51",
+				"method": "GET"
+			},
+			{
+				"id": "e7eed221-266e-4107-ab26-960e120473d5",
+				"method": "GET"
+			},
+			{
+				"id": "08da2320-fc26-4508-bd00-71fbdf5b9495",
+				"method": "PUT"
+			},
+			{
+				"id": "309a2fa5-d5f8-4d61-bf22-5d79d9e671cb",
+				"method": "PUT"
+			},
+			{
+				"id": "07ea948a-f685-4843-bd02-7f1d005ce591",
+				"method": "DELETE"
+			},
+			{
+				"id": "207c83f1-83ec-4beb-ad45-659b5ff690af",
+				"method": "DELETE"
+			}
+		]
+	}
+}

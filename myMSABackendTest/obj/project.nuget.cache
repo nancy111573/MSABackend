@@ -1,11 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "bsr+Yz5lt1hInNy7X5U1qZ0PgzOZnCCarVxjo+9BGOVBcLcfCWEtb3SX9bZMTzbYpLK1LT9jpbN4a0ZGKVKY+w==",
+  "dgSpecHash": "GNWjW2u8MqiL1Mg1T8RxSuByIyp+LC0DK7CdJ8+9aOPfy8lErFRZ9aeim8YLCtkiLXmoZElzlrv+zbW6u2um0g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\nancy\\Documents\\2022S1\\MSA\\2022-Phase-2\\myMSABackend\\myMSABackendTest\\myMSABackendTest.csproj",
+  "projectFilePath": "C:\\Users\\nancy\\Documents\\2022S1\\MSA\\MSABackend\\myMSABackendTest\\myMSABackendTest.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\nancy\\.nuget\\packages\\castle.core\\5.0.0\\castle.core.5.0.0.nupkg.sha512",
     "C:\\Users\\nancy\\.nuget\\packages\\coverlet.collector\\3.0.2\\coverlet.collector.3.0.2.nupkg.sha512",
+    "C:\\Users\\nancy\\.nuget\\packages\\fluentvalidation\\11.2.1\\fluentvalidation.11.2.1.nupkg.sha512",
+    "C:\\Users\\nancy\\.nuget\\packages\\fluentvalidation.aspnetcore\\11.2.1\\fluentvalidation.aspnetcore.11.2.1.nupkg.sha512",
+    "C:\\Users\\nancy\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.2.0\\fluentvalidation.dependencyinjectionextensions.11.2.0.nupkg.sha512",
     "C:\\Users\\nancy\\.nuget\\packages\\microsoft.codecoverage\\16.9.4\\microsoft.codecoverage.16.9.4.nupkg.sha512",
     "C:\\Users\\nancy\\.nuget\\packages\\microsoft.csharp\\4.4.1\\microsoft.csharp.4.4.1.nupkg.sha512",
     "C:\\Users\\nancy\\.nuget\\packages\\microsoft.data.sqlite.core\\5.0.17\\microsoft.data.sqlite.core.5.0.17.nupkg.sha512",
