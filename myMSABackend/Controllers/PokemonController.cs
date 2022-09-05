@@ -118,8 +118,15 @@ namespace myMSABackend.Controllers
                 // triming to get base experience and use assign to pokemon's "Power"
                 int start = content.IndexOf("base_experience") + "base_experience".Length + 2;
                 int end = content.Substring(start).IndexOf(",");
-                var base_ep = Int32.Parse(content.Substring(start, end));
-                Pokemon pokemon = new Pokemon { Name = name, Power = base_ep };
+                Pokemon pokemon;
+                if (content.Substring(start, end) == "null")
+                {
+                    pokemon = new Pokemon { Name = name };
+                } else
+                {
+                    var base_ep = Int32.Parse(content.Substring(start, end));
+                    pokemon = new Pokemon { Name = name, Power = base_ep };
+                }
                 Pokemon newP = _repository.AddPokemon(pokemon);
                 return Created(new Uri(Request.GetEncodedUrl() + "/" + name), newP);
             }

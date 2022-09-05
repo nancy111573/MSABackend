@@ -65,15 +65,19 @@ namespace myMSABackendTest
             Pokemon pikachu = new Pokemon { Name = "Pikachu", Power = 112, Nickname = null };
             Pokemon cubone = new Pokemon { Name = "Cubone", Power = 64, Nickname = null };
 
-            var result1 = ((IEnumerable<Pokemon>)((ObjectResult)data1.Result).Value).ToList();
-            Assert.AreEqual(result1.ElementAt(0).Name, pikachu.Name);
-            Assert.AreEqual(result1.ElementAt(0).Power, pikachu.Power);
-            Assert.AreEqual(result1.ElementAt(0).Nickname, pikachu.Nickname);
+            var results = ((IEnumerable<Pokemon>)((ObjectResult)data1.Result).Value).ToList();
+            ValidationResult validateResult = validator.Validate(results.ElementAt(0));
+            Assert.AreEqual(true, validateResult.IsValid);
+            Assert.AreEqual(results.ElementAt(0).Name, pikachu.Name);
+            Assert.AreEqual(results.ElementAt(0).Power, pikachu.Power);
+            Assert.AreEqual(results.ElementAt(0).Nickname, pikachu.Nickname);
 
-            Assert.AreEqual(result1.ElementAt(1).Name, cubone.Name);
-            Assert.AreEqual(result1.ElementAt(1).Power, cubone.Power);
-            Assert.AreEqual(result1.ElementAt(1).Nickname, cubone.Nickname);
-            Assert.AreEqual(result1.Count(), 2);
+            ValidationResult validateResult2 = validator.Validate(results.ElementAt(1));
+            Assert.AreEqual(true, validateResult2.IsValid);
+            Assert.AreEqual(results.ElementAt(1).Name, cubone.Name);
+            Assert.AreEqual(results.ElementAt(1).Power, cubone.Power);
+            Assert.AreEqual(results.ElementAt(1).Nickname, cubone.Nickname);
+            Assert.AreEqual(results.Count(), 2);
         }
 
         [Test]
@@ -84,6 +88,8 @@ namespace myMSABackendTest
                 .Returns(x => null);
             repository.AddPokemon(Arg.Any<Pokemon>())
                 .Returns(new Pokemon { Name = "snorlax", Power = 189, Nickname = null });
+            repository.AddPokemon(Arg.Any<Pokemon>())
+                .Returns(new Pokemon { Name = "Wrydeer", Power = 0, Nickname = null });
 
             string aString = "true,\"slot\":3}],\"base_experience\":189,\"forms\":";
             var c = Substitute.ForPartsOf<PokemonController>(client, repository);
@@ -94,6 +100,7 @@ namespace myMSABackendTest
             Assert.IsNotNull(rawString);
             // test GetRawPokemon method is reached by addPokemon method
             c.Received().GetRawPokemon("snorlax");
+
         }
 
         [Test]
@@ -112,19 +119,21 @@ namespace myMSABackendTest
             var result = (setPokemon as OkObjectResult).Value;
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<Pokemon>(result);
+            ValidationResult validateResult1 = validator.Validate((Pokemon)result);
+            Assert.AreEqual(true, validateResult1.IsValid);
+            Assert.AreEqual(1, nameChanged);
 
             // pokemon is not in team
             IActionResult notSetPokemon = c.setNickname("Ditto", "slim");
             Assert.IsNotNull(notSetPokemon);
             Assert.IsNotInstanceOf<Pokemon>(notSetPokemon);
-
             Assert.AreEqual(1, nameChanged);
         }
 
         [Test]
         public async Task TestDeletePokemon()
         {
-            var numInTeam = 2;
+            var numInTeam = 2; // team initially has 2 pokemons
             var repository = Substitute.For<IDBRepo>();
             repository.When(x => x.RemovePokemon(Arg.Any<Pokemon>()))
                 .Do(x => numInTeam--);
@@ -135,11 +144,11 @@ namespace myMSABackendTest
             // pokemon is in team
             IActionResult deleted = c.deletePokemon("Pikachu");
             Assert.IsNotNull(deleted);
+            Assert.AreEqual(1, numInTeam);
 
             // pokemon is not in team
             IActionResult notDeleted = c.deletePokemon("Ditto");
             Assert.IsNotNull(notDeleted);
-
             Assert.AreEqual(1, numInTeam);
         }
     }
