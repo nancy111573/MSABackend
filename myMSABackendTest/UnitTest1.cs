@@ -12,6 +12,7 @@ using NSubstitute;
 using Microsoft.AspNetCore.Mvc;
 using Castle.Core.Resource;
 using FluentValidation.Results;
+using FluentAssertions;
 
 namespace myMSABackendTest
 {
@@ -53,9 +54,9 @@ namespace myMSABackendTest
         public async Task Test_Repository_and_DBContext()
         {
             var data = repository.GetPokemons();
-            Assert.AreEqual("Pikachu", data.ToArray()[0].Name);
+            data.ToArray()[0].Name.Should().Be("Pikachu");
             ValidationResult results = validator.Validate(data.ToArray()[0]);
-            Assert.AreEqual(true, results.IsValid);
+            results.IsValid.Should().BeTrue();
         }
 
         [Test]
@@ -67,17 +68,17 @@ namespace myMSABackendTest
 
             var results = ((IEnumerable<Pokemon>)((ObjectResult)data1.Result).Value).ToList();
             ValidationResult validateResult = validator.Validate(results.ElementAt(0));
-            Assert.AreEqual(true, validateResult.IsValid);
-            Assert.AreEqual(results.ElementAt(0).Name, pikachu.Name);
-            Assert.AreEqual(results.ElementAt(0).Power, pikachu.Power);
-            Assert.AreEqual(results.ElementAt(0).Nickname, pikachu.Nickname);
+            validateResult.IsValid.Should().BeTrue();
+            results.ElementAt(0).Name.Should().Be(pikachu.Name);
+            results.ElementAt(0).Power.Should().Be(pikachu.Power);
+            results.ElementAt(0).Nickname.Should().Be(pikachu.Nickname);
 
             ValidationResult validateResult2 = validator.Validate(results.ElementAt(1));
-            Assert.AreEqual(true, validateResult2.IsValid);
-            Assert.AreEqual(results.ElementAt(1).Name, cubone.Name);
-            Assert.AreEqual(results.ElementAt(1).Power, cubone.Power);
-            Assert.AreEqual(results.ElementAt(1).Nickname, cubone.Nickname);
-            Assert.AreEqual(results.Count(), 2);
+            validateResult2.IsValid.Should().BeTrue();
+            results.ElementAt(1).Name.Should().Be(cubone.Name);
+            results.ElementAt(1).Power.Should().Be(cubone.Power);
+            results.ElementAt(1).Nickname.Should().Be(cubone.Nickname);
+            results.Count().Should().Be(2);
         }
 
         [Test]
@@ -97,7 +98,7 @@ namespace myMSABackendTest
             c.WhenForAnyArgs(x => x.GetRawPokemon("snorlax")).DoNotCallBase();
 
             var rawString = c.addPokemon("snorlax");
-            Assert.IsNotNull(rawString);
+            rawString.Should().NotBeNull();
             // test GetRawPokemon method is reached by addPokemon method
             c.Received().GetRawPokemon("snorlax");
 
@@ -117,17 +118,17 @@ namespace myMSABackendTest
             // pokemon is in team
             IActionResult setPokemon = c.setNickname("Pikachu", "yellow");
             var result = (setPokemon as OkObjectResult).Value;
-            Assert.IsNotNull(result);
-            Assert.IsInstanceOf<Pokemon>(result);
+            result.Should().NotBeNull();
+            result.Should().BeOfType(typeof(Pokemon), "check is pokemon before passing to validator", typeof(Pokemon));
             ValidationResult validateResult1 = validator.Validate((Pokemon)result);
-            Assert.AreEqual(true, validateResult1.IsValid);
-            Assert.AreEqual(1, nameChanged);
+            validateResult1.IsValid.Should().BeTrue();
+            nameChanged.Should().Be(1);
 
             // pokemon is not in team
             IActionResult notSetPokemon = c.setNickname("Ditto", "slim");
-            Assert.IsNotNull(notSetPokemon);
-            Assert.IsNotInstanceOf<Pokemon>(notSetPokemon);
-            Assert.AreEqual(1, nameChanged);
+            notSetPokemon.Should().NotBeNull();
+            notSetPokemon.Should().BeOfType(typeof(NotFoundObjectResult), "check is pokemon before passing to validator", typeof(NotFoundObjectResult));
+            nameChanged.Should().Be(1); 
         }
 
         [Test]
@@ -143,13 +144,13 @@ namespace myMSABackendTest
 
             // pokemon is in team
             IActionResult deleted = c.deletePokemon("Pikachu");
-            Assert.IsNotNull(deleted);
-            Assert.AreEqual(1, numInTeam);
+            deleted.Should().NotBeNull();
+            numInTeam.Should().Be(1);
 
             // pokemon is not in team
             IActionResult notDeleted = c.deletePokemon("Ditto");
-            Assert.IsNotNull(notDeleted);
-            Assert.AreEqual(1, numInTeam);
+            notDeleted.Should().NotBeNull();
+            numInTeam.Should().Be(1); // still 1
         }
     }
 }

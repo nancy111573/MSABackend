@@ -129,6 +129,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "FluentAssertions": {
+              "target": "Package",
+              "version": "[6.7.0, )"
+            },
             "FluentValidation": {
               "target": "Package",
               "version": "[11.2.1, )"
